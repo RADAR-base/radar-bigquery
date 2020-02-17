@@ -54,6 +54,7 @@ if __name__ == '__main__':
     parser.add_argument("-d", "--days",
                         help="The number of days to process the data from. Example if 60 days, then start date will be"
                              " (today - 60 days)", type=int, default=60)
+    parser.add_argument("-o", "--output", help="The output path where to store the data.", default="output")
     args = parser.parse_args()
     days_to_subtract = args.days
     start = format_datetime(datetime.today() - timedelta(days=days_to_subtract))
@@ -95,6 +96,6 @@ if __name__ == '__main__':
                     study_issues.append([other_event_time, study, subjectId,
                                          other_events[other_events['event_timestamp'] == other_event_time][
                                              'event_name'].values])
-        # Save result of each study to a file. The directory is constructed using start and end date.
-        write_to_csv_file(filename=study + '.csv', filepath='output/' + f'{start}' + f'-{end}',
+        # Save result of each study to a file. The directory is constructed using output path, start date and end date.
+        write_to_csv_file(filename=study + '.csv', filepath=f'{args.output}/' + f'{start}' + f'-{end}',
                           data=pd.DataFrame(study_issues, columns=csv_headers))

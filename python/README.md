@@ -15,9 +15,9 @@ The output is of the structure - `output/{start-date}-{end-date}/{study-name}.cs
     ```
    
 2. Add your Google cloud credentials file path as environment variable `GOOGLE_APPLICATION_CREDENTIALS`. This can be done using `export` command on linux.
-For more information, see the [official docs]().
+For more information, see the [official docs](https://cloud.google.com/docs/authentication/getting-started).
 
-3. You can see the usage of the script using 
+3. You can see the usage of the script using
     ```shell script
      python3 scripts/get_list_of_participants_with_issues.py --help
     ```
